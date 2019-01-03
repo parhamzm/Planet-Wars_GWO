@@ -57,7 +57,7 @@ var MakePlanet = ()=>{
 
 
 var MoveForces = (planet1, planet2, plenty)=>{ // moving forces from planet1 -> planet2
-    if (planet1.type === planet2.type){
+    if (planet1.force_type === planet2.force_type){
         planet2.add_forces(plenty);
         planet1.minus_forces(plenty);
     }else{
@@ -66,7 +66,7 @@ var MoveForces = (planet1, planet2, plenty)=>{ // moving forces from planet1 -> 
             planet2.minus_forces(plenty);
         }else{
             planet1.minus_forces(plenty);
-            planet2.type = planet1.type;
+            planet2.force_type = planet1.force_type;
             temp_forces = Math.abs(plenty - planet2.init_force);
             planet2.init_force = temp_forces;
         }
@@ -93,5 +93,23 @@ var ForcesGrowth = (planet1)=>{
 };
 
 var Winner = () => {
+    let winner_player = "G";
+    for(let i=0;i<15;i++){
+        if(planets[i].force_type === "Red"){
+            winner_player = "Red";
+            break;
+        }
+        else if(planets[i].force_type === "Green"){
+            winner_player = "Green";
+            break;
+        }
+    }
+    for (let i=0;i<15;i++){
+        if(planets[i].force_type === winner_player || planets[i].force_type === "Blank"){
 
+        }else{
+            console.log("No One Has won Yet!");
+        }
+    }
 };
+
