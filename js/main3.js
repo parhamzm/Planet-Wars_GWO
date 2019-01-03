@@ -1,5 +1,5 @@
 class Planet{
-    constructor(planet_size, init_force, force_type, x, y){
+    constructor(planet_size, init_force = 5, force_type = "Blank", x=0, y=0){
         this.planet_size = planet_size;
         this.init_force = init_force;
         this.force_type = force_type;
@@ -32,6 +32,28 @@ class Planet{
     }
 
 }
+
+var planets = [];
+
+var MakePlanet = ()=>{
+    let temp_planet;
+    for(let i = 0;i < 5; i++){
+        temp_planet = new Planet("S", 5, "Blank");
+        planets.push(temp_planet);
+    }
+    for(let i = 0;i < 5; i++){
+        temp_planet = new Planet("M", 7, "Blank");
+        planets.push(temp_planet);
+    }
+    for(let i = 0;i < 3; i++){
+        temp_planet = new Planet("L", 10, "Blank");
+        planets.push(temp_planet);
+    }
+    temp_planet = new Planet("L", 50, "Red");
+    planets.push(temp_planet);
+    temp_planet = new Planet("L", 50, "Green");
+    planets.push(temp_planet);
+};
 
 
 var MoveForces = (planet1, planet2, plenty)=>{ // moving forces from planet1 -> planet2
@@ -68,4 +90,8 @@ var ForcesGrowth = (planet1)=>{
     if (planet1.planet_size === "L"){
         planet1.init_force += 5;
     }
+};
+
+var Winner = () => {
+
 };
