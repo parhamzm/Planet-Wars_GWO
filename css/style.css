@@ -1,0 +1,18 @@
+body{
+    background-color: black;
+}
+
+.planet-small{
+    width: 75px;
+    height: 60px;
+}
+
+.planet-medium{
+    width: 107px;
+    height: 90px;
+}
+
+.planet-large{
+    width: 173px;
+    height: 143px;
+}
