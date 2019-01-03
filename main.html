@@ -6,12 +6,37 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <img id="planet-small" class="planet planet-small" src="image/1.png">
+    <!-- <img id="planet-small" class="planet planet-small" src="image/1.png">
     <img id="planet-medium"class="planet planet-medium" src="image/1.png">
-    <img id="planet-large" class="planet planet-large" src="image/1.png">
-    <canvas id="divCanvas"></canvas>
+    <img id="planet-large" class="planet planet-large" src="image/1.png"> -->
+    <canvas id="divCanvas">
+            
+    </canvas>
+    <canvas id="myCanvas" width="500" height="600" style="border:1px solid #d3d3d3;"></canvas>
 </body>
 
 <script src="js/jquery3.3.1.js"></script>
 <script src="js/main.js"></script>
+<script>
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.beginPath();
+var coords=[ [80,50], [150,100], [90,280], 
+            [160,360],[60,500], [150,180], 
+            [260,300],[320,50],[350,380], 
+            [250,500],[400,120],
+             [150,450], 
+            [400,520], 
+            [420,350],
+             [300,180], 
+];
+for(var i = 0; i < coords.length; i++){
+    ctx.beginPath();
+    ctx.arc(coords[i][0], coords[i][1], 5*( Math.floor((Math.random()*5)+3) ), 0, Math.PI * 2, true);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+}
+</script>
 </html>
+

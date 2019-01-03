@@ -1,8 +1,9 @@
-body{
+/* body{
     background-color: black;
 }
 .planet{
     position: absolute;
+    z-index: 2;
 }
 .planet-small{
     width: 75px;
@@ -17,9 +18,19 @@ body{
 .planet-large{
     width: 173px;
     height: 143px;
+} */
+body{
+    padding: 0;
+    margin: 0;
 }
-canvas, body, html {
-    margin: -1px; 
+#divCanvas {
+    /* margin: -1px;  */
     background-color: #000; 
     position: absolute; 
+}
+#myCanvas{
+    right: 50%;
+    transform: translateX(50%);
+    position: absolute;
+    margin: 1em;
 }
