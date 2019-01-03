@@ -113,3 +113,17 @@ var Winner = () => {
     }
 };
 
+var MinimumDistance = () =>{
+    
+};
+
+var GrayWolfOpt = ()=>{
+    let enemy_forces = [];
+    for (let i=0; i<15;i++){
+        if(planets[i].force_type === "Green"){
+            enemy_forces[i] = 1;
+        }else{
+            enemy_forces[i] = 0;
+        }
+    }
+};
