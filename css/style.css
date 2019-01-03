@@ -1,7 +1,9 @@
 body{
     background-color: black;
 }
-
+.planet{
+    position: absolute;
+}
 .planet-small{
     width: 75px;
     height: 60px;
@@ -15,4 +17,9 @@ body{
 .planet-large{
     width: 173px;
     height: 143px;
+}
+canvas, body, html {
+    margin: -1px; 
+    background-color: #000; 
+    position: absolute; 
 }
