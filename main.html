@@ -38,7 +38,7 @@ r_label = "L"
 var new_Planet = new Planet(r_label, force ,"Green",coords[0][0],coords[0][1],r );
 ctx.beginPath();
 ctx.arc(coords[0][0], coords[0][1], r, 0, Math.PI * 2, true);
-ctx.fillStyle = "green";
+ctx.fillStyle = get_color(new_Planet.get_type());
 ctx.fill();
 ctx.fillStyle = "white";
 ctx.textAlign = "center";
@@ -56,7 +56,7 @@ for(var i = 1; i < coords.length-1; i++){
     force = Math.floor((Math.random()*20)+1)
     var new_Planet = new Planet(r_label, force ,"blank",coords[i][0],coords[i][1],r );
     ctx.arc(coords[i][0], coords[i][1], r, 0, Math.PI * 2, true);
-    ctx.fillStyle = "#9B9999";
+    ctx.fillStyle = get_color(new_Planet.get_type());
     ctx.fill();
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
@@ -72,7 +72,7 @@ r_label = "L"
 var new_Planet = new Planet(r_label, force ,"Red",coords[14][0],coords[14][1],r );
 ctx.beginPath();
 ctx.arc(coords[14][0], coords[14][1], r, 0, Math.PI * 2, true);
-ctx.fillStyle = "red";
+ctx.fillStyle = get_color(new_Planet.get_type());
 ctx.fill();
 ctx.fillStyle = "white";
 ctx.textAlign = "center";
