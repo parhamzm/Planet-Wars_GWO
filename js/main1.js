@@ -3,8 +3,8 @@ var canvas =document.getElementById('canvas')
 var innerWidth = 360,
     innerHeight = 620;
 
-canvas.width = innerWidth    
-canvas.height = innerHeight    
+canvas.width = innerWidth;
+canvas.height = innerHeight;
 //player
 var player = {},
     player_width = 100,
