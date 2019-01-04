@@ -85,7 +85,7 @@ console.log(planets)
 function updateCanvas(){
     ctx.beginPath();
     ctx.arc(planets[0].x_cord(),planets[0].y_cord(), planets[0].get_radius(), 0, Math.PI * 2, true);
-    ctx.fillStyle = get_color(planets[0].type);
+    ctx.fillStyle = get_color(planets[0].get_type());
     ctx.fill();
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
@@ -95,7 +95,7 @@ function updateCanvas(){
     for(var i = 1; i < coords.length-1; i++){
         ctx.beginPath();
         ctx.arc(planets[i].x_cord(),planets[i].y_cord(), planets[i].get_radius(), 0, Math.PI * 2, true);
-        ctx.fillStyle = get_color(planets[i].type);
+        ctx.fillStyle = get_color(planets[i].get_type());
         ctx.fill();
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
@@ -103,7 +103,7 @@ function updateCanvas(){
     }
     ctx.beginPath();
     ctx.arc(planets[14].x_cord(),planets[14].y_cord(), planets[14].get_radius(), 0, Math.PI * 2, true);
-    ctx.fillStyle = get_color(planets[14].type);
+    ctx.fillStyle = get_color(planets[14].get_type());
     ctx.fill();
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
@@ -113,7 +113,7 @@ function updateCanvas(){
 function get_color(type){
     if(type == "Red" ){ return "red"}
     else if(type == "Green" ){ return "green"}
-    else if(type == "Blank" ){ return "#9B9999"}
+    else { return "#9B9999"}
 }
 function growth(){
     ForcesGrowth();
