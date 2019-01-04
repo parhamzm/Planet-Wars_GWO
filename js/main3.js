@@ -80,15 +80,19 @@ var AddForce = ()=>{
     return "Hello";
 };
 
-var ForcesGrowth = (planet1)=>{
-    if (planet1.planet_size === "S"){
-        planet1.init_force += 1;
-    }
-    if (planet1.planet_size === "M"){
-        planet1.init_force += 3;
-    }
-    if (planet1.planet_size === "L"){
-        planet1.init_force += 5;
+var ForcesGrowth = ()=>{
+    for(let i=0; i<15; i++) {
+        if (planets[i].force_type === "Red" || planets[i].force_type === "Green") {
+            if (planet1.planet_size === "S") {
+                planet1.init_force += 1;
+            }
+            if (planet1.planet_size === "M") {
+                planet1.init_force += 3;
+            }
+            if (planet1.planet_size === "L") {
+                planet1.init_force += 5;
+            }
+        }
     }
 };
 
@@ -114,7 +118,7 @@ var Winner = () => {
 };
 
 var MinimumDistance = () =>{
-    
+
 };
 
 var GrayWolfOpt = ()=>{
