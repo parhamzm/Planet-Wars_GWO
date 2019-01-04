@@ -35,7 +35,7 @@ var coords=[ [80,50],
 force = 50
 r=40
 r_label = "L"
-var new_Planet = new Planet(r_label, force ,"blank",coords[0][0],coords[0][1] );
+var new_Planet = new Planet(r_label, force ,"Green",coords[0][0],coords[0][1] );
 ctx.beginPath();
 ctx.arc(coords[0][0], coords[0][1], r, 0, Math.PI * 2, true);
 ctx.fillStyle = "green";
@@ -48,7 +48,6 @@ planets.push(new_Planet)
 
 
 for(var i = 1; i < coords.length-1; i++){
-    console.log(i)
     ctx.beginPath();
     r = 10*( Math.floor((Math.random()*3)+2) )
     if(r==20){r_label = "S"}
@@ -70,7 +69,7 @@ for(var i = 1; i < coords.length-1; i++){
 force = 50
 r=40
 r_label = "L"
-var new_Planet = new Planet(r_label, force ,"blank",coords[14][0],coords[14][1] );
+var new_Planet = new Planet(r_label, force ,"Red",coords[14][0],coords[14][1] );
 ctx.beginPath();
 ctx.arc(coords[14][0], coords[14][1], r, 0, Math.PI * 2, true);
 ctx.fillStyle = "red";
@@ -80,8 +79,15 @@ ctx.textAlign = "center";
 ctx.fillText(new_Planet.forces(),coords[14][0], coords[14][1]);
 planets.push(new_Planet)
 
+
 console.log(planets)
 
+function loop(){
+    ForcesGrowth();
+    // planets.push(new_Planet)
+    setInterval(loop, 20);
+}
+loop()
 
 
 
