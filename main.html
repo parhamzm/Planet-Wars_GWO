@@ -35,7 +35,7 @@ var coords=[ [80,50],
 force = 50
 r=40
 r_label = "L"
-var new_Planet = new Planet(r_label, force ,"Green",coords[0][0],coords[0][1] );
+var new_Planet = new Planet(r_label, force ,"Green",coords[0][0],coords[0][1],r );
 ctx.beginPath();
 ctx.arc(coords[0][0], coords[0][1], r, 0, Math.PI * 2, true);
 ctx.fillStyle = "green";
@@ -54,7 +54,7 @@ for(var i = 1; i < coords.length-1; i++){
     else if(r==30){r_label = "M"}
     else if(r==40){r_label = "L"}
     force = Math.floor((Math.random()*20)+1)
-    var new_Planet = new Planet(r_label, force ,"blank",coords[i][0],coords[i][1] );
+    var new_Planet = new Planet(r_label, force ,"blank",coords[i][0],coords[i][1],r );
     ctx.arc(coords[i][0], coords[i][1], r, 0, Math.PI * 2, true);
     ctx.fillStyle = "#9B9999";
     ctx.fill();
@@ -69,7 +69,7 @@ for(var i = 1; i < coords.length-1; i++){
 force = 50
 r=40
 r_label = "L"
-var new_Planet = new Planet(r_label, force ,"Red",coords[14][0],coords[14][1] );
+var new_Planet = new Planet(r_label, force ,"Red",coords[14][0],coords[14][1],r );
 ctx.beginPath();
 ctx.arc(coords[14][0], coords[14][1], r, 0, Math.PI * 2, true);
 ctx.fillStyle = "red";
@@ -94,7 +94,7 @@ function updateCanvas(){
 
     for(var i = 1; i < coords.length-1; i++){
         ctx.beginPath();
-        ctx.arc(planets[i].x_cord(),planets[i].y_cord(), r, 0, Math.PI * 2, true);
+        ctx.arc(planets[i].x_cord(),planets[i].y_cord(), planets[i], 0, Math.PI * 2, true);
         ctx.fillStyle = "#9B9999";
         ctx.fill();
         ctx.fillStyle = "white";
