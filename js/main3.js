@@ -5,6 +5,7 @@ class Planet{
         this.force_type = force_type;
         this.x = x;
         this.y = y;
+        this.radius = radius;
     }
 
     size(){
@@ -29,6 +30,10 @@ class Planet{
 
     add_forces(plenty){
         this.init_force = this.init_force + plenty;
+    }
+
+    get_radius(){
+        return this.radius;
     }
 
 }
