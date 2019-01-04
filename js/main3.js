@@ -117,13 +117,19 @@ var Winner = () => {
             break;
         }
     }
+    // alert(winner_player);
     for (let i=0;i<15;i++){
-        if(planets[i].force_type === winner_player || planets[i].force_type === "Blank"){
 
+        if(planets[i].force_type === winner_player || planets[i].force_type === "Blank"){
+            console.log("Hello");
         }else{
             console.log("No One Has won Yet!");
+            winner_player = "None";
+            // alert(planets[i].force_type);
+            break;
         }
     }
+    return winner_player;
 };
 
 var MinimumDistance = () =>{
