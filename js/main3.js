@@ -83,14 +83,14 @@ var AddForce = ()=>{
 var ForcesGrowth = ()=>{
     for(let i=0; i<15; i++) {
         if (planets[i].force_type === "Red" || planets[i].force_type === "Green") {
-            if (planet1.planet_size === "S") {
-                planet1.init_force += 1;
+            if (planets[i].planet_size === "S") {
+                planets[i].init_force += 1;
             }
-            if (planet1.planet_size === "M") {
-                planet1.init_force += 3;
+            if (planets[i].planet_size === "M") {
+                planets[i].init_force += 3;
             }
-            if (planet1.planet_size === "L") {
-                planet1.init_force += 5;
+            if (planets[i].planet_size === "L") {
+                planets[i].init_force += 5;
             }
         }
     }
