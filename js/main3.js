@@ -136,6 +136,10 @@ var MinimumDistance = () =>{
 
 };
 
+var find_enemy = ()=>{
+    
+};
+
 var GrayWolfOpt = ()=>{
     let enemy_forces = [];
     for (let i=0; i<15;i++){
