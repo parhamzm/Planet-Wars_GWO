@@ -36,6 +36,10 @@ class Planet{
         return this.radius;
     }
 
+    get_type(){
+        return this.force_type;
+    }
+
 }
 
 var planets = [];
