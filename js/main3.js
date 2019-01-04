@@ -1,5 +1,5 @@
 class Planet{
-    constructor(planet_size, init_force = 5, force_type = "Blank", x=0, y=0){
+    constructor(planet_size, init_force = 5, force_type = "Blank", x=0, y=0, radius = 20){
         this.planet_size = planet_size;
         this.init_force = init_force;
         this.force_type = force_type;
