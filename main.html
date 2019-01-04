@@ -17,28 +17,80 @@
 
 <script src="js/jquery3.3.1.js"></script>
 <script src="js/main.js"></script>
+<script src="js/main3.js"></script>
 <script>
 
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
-ctx.beginPath();
-var coords=[ [80,50], [150,100], [90,280], 
+
+var coords=[ [80,50], 
+            [150,100], [90,280], 
             [160,360],[60,500], [150,180], 
             [260,300],[320,50],[350,380], 
-            [250,500],[400,120],
-             [150,450], 
+            [250,500],[400,120],[150,450],
+            [420,350],[300,180], 
             [400,520], 
-            [420,350],
-             [300,180], 
 ];
-for(var i = 0; i < coords.length; i++){
+
+force = 50
+r=40
+r_label = "L"
+var new_Planet = new Planet(r_label, force ,"blank",coords[0][0],coords[0][1] );
+ctx.beginPath();
+ctx.arc(coords[0][0], coords[0][1], r, 0, Math.PI * 2, true);
+ctx.fillStyle = "green";
+ctx.fill();
+ctx.fillStyle = "white";
+ctx.textAlign = "center";
+ctx.fillText(new_Planet.forces(),coords[0][0], coords[0][1]);
+planets.push(new_Planet)
+
+
+
+for(var i = 1; i < coords.length-1; i++){
+    console.log(i)
     ctx.beginPath();
-    ctx.arc(coords[i][0], coords[i][1], 5*( Math.floor((Math.random()*5)+3) ), 0, Math.PI * 2, true);
-    ctx.fillStyle = "blue";
+    r = 10*( Math.floor((Math.random()*3)+2) )
+    if(r==20){r_label = "S"}
+    else if(r==30){r_label = "M"}
+    else if(r==40){r_label = "L"}
+    force = Math.floor((Math.random()*20)+1)
+    var new_Planet = new Planet(r_label, force ,"blank",coords[i][0],coords[i][1] );
+    ctx.arc(coords[i][0], coords[i][1], r, 0, Math.PI * 2, true);
+    ctx.fillStyle = "#9B9999";
     ctx.fill();
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.fillText(new_Planet.forces(),coords[i][0], coords[i][1]);
+    planets.push(new_Planet)
+    
 }
+
+
+force = 50
+r=40
+r_label = "L"
+var new_Planet = new Planet(r_label, force ,"blank",coords[14][0],coords[14][1] );
+ctx.beginPath();
+ctx.arc(coords[14][0], coords[14][1], r, 0, Math.PI * 2, true);
+ctx.fillStyle = "red";
+ctx.fill();
+ctx.fillStyle = "white";
+ctx.textAlign = "center";
+ctx.fillText(new_Planet.forces(),coords[14][0], coords[14][1]);
+planets.push(new_Planet)
+
+console.log(planets)
+
+
+
+
+
+
+
+
+
 </script>
 </html>
 
-<script src="js/main3.js"></script>
-</html>
+
