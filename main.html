@@ -122,18 +122,70 @@ function growth(){
 }
 function loop(){
     // planets.push(new_Planet)
+    // checkWinner()
     ForcesGrowth()
-    
     ctx.clearRect(0,0, c.width, c.height)
     updateCanvas()
-    console.log(planets[0])
-    
+    // console.log(planets[0])
 }
 
-window.setInterval(loop, 2000);
+window.setInterval(loop, 500);
+
+function checkIfcircleClicked(x,y){
+    for(let i=0; i<15; i++) {
+        if( Math.sqrt((x-planets[i].x_cord())*(x-planets[i].x_cord()) + (y-planets[i].y_cord())*(y-planets[i].y_cord())) < planets[i].get_radius() ){
+            // console.log(i)
+            return i
+        }   
+    }
+}
+
+function getCursorPosition(canvas, event) {
+    var rect = canvas.getBoundingClientRect();
+    var x = event.clientX - rect.left;
+    var y = event.clientY - rect.top;
+    // console.log("x: " + x + " y: " + y);
+    return [x,y]
+}
+
+// function checkColor(){
+
+// }
+var first_planet = -1 ;
+function init() {
+var canvas = document.getElementById('myCanvas'); 
+canvas.addEventListener("click", function (e) { 
+    var position = getCursorPosition(canvas, e);
+    var x = position[0] , y = position[1];
+    plantClicked = checkIfcircleClicked(x,y)  
+
+    if (planets[plantClicked].get_type() == "Green"){
+        console.log(first_planet)
+        if (first_planet >= 0   && first_planet != plantClicked){ 
+            console.log("hi")
+            MoveForces(planets[first_planet],planets[plantClicked],Math.floor(planets[first_planet].forces()/2))
+            first_planet = -1 
+        }else{
+            console.log("bye")
+            first_planet = plantClicked
+        }
+    }else{
+        if (first_planet >= 0   && first_planet != plantClicked){ 
+            console.log("hi2")
+            MoveForces(planets[first_planet],planets[plantClicked],Math.floor(planets[first_planet].forces()/2))
+            first_planet = -1 
+        }else{
+            console.log("bye2")
+            // first_planet = plantClicked
+        }
+    }
+    });
+}
 
 
-
+$(document).ready(function() {
+    init();   
+});
 
 
 
