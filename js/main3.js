@@ -195,15 +195,25 @@ var GrayWolfOpt = ()=>{
             blank_planets_temp.sort((a, b)=>{
                 return a.init_force - b.init_force;
             });
+            //TODO
             // hala bayad be kamtarin sayare Blank nirohasho befreste!!!
         }else if (friend_planets_length() >= 1) {
-
+            //TODO
+            // hala bayad biyaym va halghe mohasere ro be enemy tang konim
         }
         for (let i=0;i<15;i++){
 
         }
-    }if (enemy_forces.length >= 1){
+    }else if (enemy_forces.length >= 1){
+        if (enemy_planets_length() > friend_planets_length()){
+            //TODO
+            // dar in sorat bayad nirohaye friend ro be sayareie az doshamn ke kamtarin tedade niro toshe enteghal bedim
 
+        }
+        else if(enemy_planets_length() < friend_planets_length()){
+            //TODO
+            // dar in sorat bayad
+        }
     }
     for (let i=0; i < 15; i++){
         
