@@ -69,8 +69,41 @@ var MakePlanet = ()=>{
     planets.push(temp_planet);
 };
 
+var find_planet_by_id = (find_id)=>{
+    for (let i = 0; i < 15; i++){
+        if(planets[i].get_id() === find_id){
+            return planets[i];
+        }
+    }
+    return none;
+};
 
 var MoveForces = (planet1, planet2, plenty)=>{ // moving forces from planet1 -> planet2
+    if (planet1.force_type === planet2.force_type){
+        planet2.add_forces(plenty);
+        planet1.minus_forces(plenty);
+    }else{
+        if (planet2.init_force > plenty) {
+            planet1.minus_forces(plenty);
+            planet2.minus_forces(plenty);
+        }else{
+            planet1.minus_forces(plenty);
+            planet2.force_type = planet1.force_type;
+            temp_forces = Math.abs(plenty - planet2.init_force);
+            planet2.init_force = temp_forces;
+        }
+    }
+};
+
+var MoveForces_by_id = (id1, id2, plenty)=>{ // moving forces from planet1 -> planet2
+    planet1 = find_planet_by_id(id1);
+    if(planet1===none){
+        console.log("Problem with id!");
+    }
+    planet2 = find_planet_by_id(id2);
+    if(planet2===none){
+        console.log("Problem with id!");
+    }
     if (planet1.force_type === planet2.force_type){
         planet2.add_forces(plenty);
         planet1.minus_forces(plenty);
@@ -195,17 +228,24 @@ var GrayWolfOpt = ()=>{
             blank_planets_temp.sort((a, b)=>{
                 return a.init_force - b.init_force;
             });
+            //TODO
             // hala bayad be kamtarin sayare Blank nirohasho befreste!!!
         }else if (friend_planets_length() >= 1) {
-
+            //TODO
+            // hala bayad biyaym va halghe mohasere ro be enemy tang konim
         }
         for (let i=0;i<15;i++){
 
         }
-    }if (enemy_forces.length >= 1){
+    }else if (enemy_forces.length >= 1){
+        if (enemy_planets_length() > friend_planets_length()){
+            //TODO
+            // dar in sorat bayad nirohaye friend ro be sayareie az doshamn ke kamtarin tedade niro toshe enteghal bedim
 
+        }
+        else if(enemy_planets_length() < friend_planets_length()){
+            //TODO
+            // dar in sorat bayad dar har marhale nirohaye khodam
+        }
     }
-    for (let i=0; i < 15; i++){
-        
-    } 
 };
