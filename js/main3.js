@@ -171,7 +171,6 @@ var Winner = () => {
     }
     // alert(winner_player);
     for (let i=0;i<15;i++){
-
         if(planets[i].force_type === winner_player || planets[i].force_type === "Blank"){
             console.log("Hello");
         }else{
@@ -273,11 +272,17 @@ var GrayWolfOpt = ()=>{
             //TODO
             // hala bayad biyaym va halghe mohasere ro be enemy tang konim
         }
-        for (let i=0;i<15;i++){
-
-        }
     }else if (enemy_planets_length() > 1){
         if (enemy_planets_length() > friend_planets_length()){
+            let enemy_planets_temp = find_enemy_planets();
+            let friend_planets_temp = find_friend_planets();
+            enemy_planets_temp.sort((a, b)=>{
+                return a.init_force - b.init_force;
+            });
+            for(let i=0; i<friend_planets_temp.length; i++){
+                MoveForces(planets[friend_planets_temp[i].get_id()], planets[enemy_planets_temp[0].get_id()],
+                    Math.floor(friend_planets_temp[i].forces()/2));
+            }
             //TODO
             // dar in sorat bayad nirohaye friend ro be sayareie az doshamn ke kamtarin tedade niro toshe enteghal bedim
 

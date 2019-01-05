@@ -48,8 +48,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/main3.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="269" column="47" selection-start-line="269" selection-start-column="47" selection-end-line="269" selection-end-column="47" />
+            <state relative-caret-position="478">
+              <caret line="283" column="33" selection-start-line="283" selection-start-column="33" selection-end-line="283" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -73,6 +73,11 @@
         <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>non</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -160,12 +165,12 @@
       <option name="presentableId" value="Default" />
       <updated>1546446698114</updated>
       <workItem from="1546446705008" duration="1246000" />
-      <workItem from="1546505270065" duration="41521000" />
+      <workItem from="1546505270065" duration="43355000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42767000" />
+    <option name="totallyTimeSpent" value="44601000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
@@ -227,8 +232,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main3.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="269" column="47" selection-start-line="269" selection-start-column="47" selection-end-line="269" selection-end-column="47" />
+        <state relative-caret-position="478">
+          <caret line="283" column="33" selection-start-line="283" selection-start-column="33" selection-end-line="283" selection-end-column="33" />
         </state>
       </provider>
     </entry>
