@@ -1,5 +1,5 @@
 class Planet{
-    constructor(planet_size, init_force = 5, force_type = "Blank", x=0, y=0, radius = 20, id = 1){
+    constructor(planet_size, init_force = 5, force_type = "Blank", x=0, y=0, radius = 20, id = 1, value = 0){
         this.planet_size = planet_size;
         this.init_force = init_force;
         this.force_type = force_type;
@@ -7,6 +7,7 @@ class Planet{
         this.y = y;
         this.radius = radius;
         this.id = id;
+        this.value = value;
     }
 
     size(){
@@ -43,6 +44,19 @@ class Planet{
 
     get_id(){
         return this.id;
+    }
+
+    get_value(){
+        return this.value;
+    }
+
+    set_value(value1){
+        this.value = value1;
+    }
+
+    calculate_value(){
+        let temp_value = this.radius - this.init_force;
+        this.set_value(temp_value);
     }
 
 }
@@ -220,13 +234,20 @@ var friend_planets_length = ()=>{
     return friend_planets_temp.length;
 };
 
+var update_values = (temp_array)=>{
+    for(let i=0; i<temp_array.length; i++){
+        temp_array[i].calculate_value();
+    }
+};
+
 
 var GrayWolfOpt = ()=>{
     if (enemy_planets_length() === 1){
         if (friend_planets_length() === 1){
             let blank_planets_temp = find_blank_planets();
+            update_values(blank_planets_temp);
             blank_planets_temp.sort((a, b)=>{
-                return a.init_force - b.init_force;
+                return b.value - a.value;
             });
             //TODO
             // hala bayad be kamtarin sayare Blank nirohasho befreste!!!
@@ -237,7 +258,7 @@ var GrayWolfOpt = ()=>{
         for (let i=0;i<15;i++){
 
         }
-    }else if (enemy_forces.length >= 1){
+    }else if (enemy_planets_length() > 1){
         if (enemy_planets_length() > friend_planets_length()){
             //TODO
             // dar in sorat bayad nirohaye friend ro be sayareie az doshamn ke kamtarin tedade niro toshe enteghal bedim
