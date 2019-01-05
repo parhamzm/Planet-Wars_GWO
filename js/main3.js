@@ -89,7 +89,7 @@ var find_planet_by_id = (find_id)=>{
             return planets[i];
         }
     }
-    return none;
+    return null;
 };
 
 var MoveForces = (planet1, planet2, plenty)=>{ // moving forces from planet1 -> planet2
@@ -111,11 +111,11 @@ var MoveForces = (planet1, planet2, plenty)=>{ // moving forces from planet1 -> 
 
 var MoveForces_by_id = (id1, id2, plenty)=>{ // moving forces from planet1 -> planet2
     planet1 = find_planet_by_id(id1);
-    if(planet1===none){
+    if(planet1===null){
         console.log("Problem with id!");
     }
     planet2 = find_planet_by_id(id2);
-    if(planet2===none){
+    if(planet2===null){
         console.log("Problem with id!");
     }
     if (planet1.force_type === planet2.force_type){
@@ -193,7 +193,7 @@ var find_enemy_planets = ()=>{
     enemy_planets = [];
     for(let i=0; i<15; i++){
         if (planets[i].force_type === "Green"){
-            enemy_forces.push(planets[i]);
+            enemy_planets.push(planets[i]);
         }
     }
     return enemy_planets;
@@ -207,7 +207,7 @@ var enemy_planets_length = ()=>{
 var blank_planets = [];
 var find_blank_planets = ()=>{
     blank_planets = [];
-    for (let i; i<15; i++){
+    for (let i=0; i<15; i++){
         if (planets[i].force_type === "Blank"){
             blank_planets.push(planets[i]);
         }
@@ -216,14 +216,14 @@ var find_blank_planets = ()=>{
 };
 
 var blank_planets_length = ()=>{
-    let blank_planets_temp = find_enemy_planets();
+    let blank_planets_temp = find_blank_planets();
     return blank_planets_temp.length;
 };
 
 var friend_planets = [];
 var find_friend_planets = ()=>{
     friend_planets = [];
-    for (let i; i<15; i++){
+    for (let i=0; i<15; i++){
         if (planets[i].force_type === "Red"){
             friend_planets.push(planets[i]);
         }
@@ -233,6 +233,7 @@ var find_friend_planets = ()=>{
 
 var friend_planets_length = ()=>{
     let friend_planets_temp = find_friend_planets();
+    // console.log(friend_planets_temp)
     return friend_planets_temp.length;
 };
 
@@ -244,15 +245,19 @@ var update_values = (temp_array)=>{
 
 
 var GrayWolfOpt = ()=>{
+    console.log(enemy_planets_length(),friend_planets_length())
+    // console.log(enemy_planets_length())
     if (enemy_planets_length() === 1){
+        // console.log(friend_planets_length())
         if (friend_planets_length() === 1){
+            console.log("hi")
             let friend_planets_temp = find_friend_planets();
             let blank_planets_temp = find_blank_planets();
             update_values(blank_planets_temp);
             blank_planets_temp.sort((a, b)=>{
                 return b.value - a.value;
             });
-            MoveForces_by_id(planets[friend_planets_temp[0].get_id()], planets[blank_planets_temp[0].get_id()],
+            MoveForces(planets[friend_planets_temp[0].get_id()], planets[blank_planets_temp[0].get_id()],
                 Math.floor(friend_planets_temp[0].forces()/2));
             //TODO  
             // hala bayad be kamtarin sayare Blank nirohasho befreste!!!
