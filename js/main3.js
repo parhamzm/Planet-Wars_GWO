@@ -288,8 +288,28 @@ var GrayWolfOpt = ()=>{
 
         }
         else if(enemy_planets_length() < friend_planets_length()){
+            let enemy_planets_temp = find_enemy_planets();
+            let friend_planets_temp = find_friend_planets();
+            enemy_planets_temp.sort((a, b)=>{
+                return a.init_force - b.init_force;
+            });
+            for(let i=0; i<friend_planets_temp.length; i++){
+                MoveForces(planets[friend_planets_temp[i].get_id()], planets[enemy_planets_temp[0].get_id()],
+                    Math.floor(friend_planets_temp[i].forces()/2));
+            }
             //TODO
             // dar in sorat bayad dar har marhale nirohaye khodam
+        }
+        else if(enemy_planets_length() === friend_planets_length()){
+            let enemy_planets_temp = find_enemy_planets();
+            let friend_planets_temp = find_friend_planets();
+            enemy_planets_temp.sort((a, b)=>{
+                return a.init_force - b.init_force;
+            });
+            for(let i=0; i<friend_planets_temp.length; i++){
+                MoveForces(planets[friend_planets_temp[i].get_id()], planets[enemy_planets_temp[0].get_id()],
+                    Math.floor(friend_planets_temp[i].forces()/2));
+            }
         }
     }
 };
