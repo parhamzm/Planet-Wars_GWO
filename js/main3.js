@@ -1,11 +1,12 @@
 class Planet{
-    constructor(planet_size, init_force = 5, force_type = "Blank", x=0, y=0, radius = 20){
+    constructor(planet_size, init_force = 5, force_type = "Blank", x=0, y=0, radius = 20, id = 1){
         this.planet_size = planet_size;
         this.init_force = init_force;
         this.force_type = force_type;
         this.x = x;
         this.y = y;
         this.radius = radius;
+        this.id = id;
     }
 
     size(){
@@ -38,6 +39,10 @@ class Planet{
 
     get_type(){
         return this.force_type;
+    }
+
+    get_id(){
+        return this.id;
     }
 
 }
@@ -136,17 +141,71 @@ var MinimumDistance = () =>{
 
 };
 
-var find_enemy = ()=>{
-    
-};
-
-var GrayWolfOpt = ()=>{
-    let enemy_forces = [];
-    for (let i=0; i<15;i++){
-        if(planets[i].force_type === "Green"){
-            enemy_forces[i] = 1;
-        }else{
-            enemy_forces[i] = 0;
+var enemy_planets = [];
+var find_enemy_planets = ()=>{
+    enemy_planets = [];
+    for(let i=0; i<15; i++){
+        if (planets[i].force_type === "Green"){
+            enemy_forces.push(planets[i]);
         }
     }
+    return enemy_planets;
+};
+
+var enemy_planets_length = ()=>{
+    let enemy_planet_temp = find_enemy_planets();
+    return enemy_planet_temp.length;
+};
+
+var blank_planets = [];
+var find_blank_planets = ()=>{
+    blank_planets = [];
+    for (let i; i<15; i++){
+        if (planets[i].force_type === "Blank"){
+            blank_planets.push(planets[i]);
+        }
+    }
+};
+
+var blank_planets_length = ()=>{
+    let blank_planets_temp = find_enemy_planets();
+    return blank_planets_temp.length;
+};
+
+var friend_planets = [];
+var find_friend_planets = ()=>{
+    friend_planets = [];
+    for (let i; i<15; i++){
+        if (planets[i].force_type === "Red"){
+            friend_planets.push(planets[i]);
+        }
+    }
+};
+
+var friend_planets_length = ()=>{
+    let friend_planets_temp = find_friend_planets();
+    return friend_planets_temp.length;
+};
+
+
+var GrayWolfOpt = ()=>{
+    if (enemy_planets_length() === 1){
+        if (friend_planets_length() === 1){
+            let blank_planets_temp = find_blank_planets();
+            blank_planets_temp.sort((a, b)=>{
+                return a.init_force - b.init_force;
+            });
+            // hala bayad be kamtarin sayare Blank nirohasho befreste!!!
+        }else if (friend_planets_length() >= 1) {
+
+        }
+        for (let i=0;i<15;i++){
+
+        }
+    }if (enemy_forces.length >= 1){
+
+    }
+    for (let i=0; i < 15; i++){
+        
+    } 
 };
