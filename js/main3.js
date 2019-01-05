@@ -212,6 +212,7 @@ var find_blank_planets = ()=>{
             blank_planets.push(planets[i]);
         }
     }
+    return blank_planets;
 };
 
 var blank_planets_length = ()=>{
@@ -227,6 +228,7 @@ var find_friend_planets = ()=>{
             friend_planets.push(planets[i]);
         }
     }
+    return friend_planets;
 };
 
 var friend_planets_length = ()=>{
@@ -244,13 +246,17 @@ var update_values = (temp_array)=>{
 var GrayWolfOpt = ()=>{
     if (enemy_planets_length() === 1){
         if (friend_planets_length() === 1){
+            let friend_planets_temp = find_friend_planets();
             let blank_planets_temp = find_blank_planets();
             update_values(blank_planets_temp);
             blank_planets_temp.sort((a, b)=>{
                 return b.value - a.value;
             });
-            //TODO
+            MoveForces_by_id(planets[friend_planets_temp[0].get_id()], planets[blank_planets_temp[0].get_id()],
+                Math.floor(friend_planets_temp[0].forces()/2));
+            //TODO  
             // hala bayad be kamtarin sayare Blank nirohasho befreste!!!
+
         }else if (friend_planets_length() >= 1) {
             //TODO
             // hala bayad biyaym va halghe mohasere ro be enemy tang konim
