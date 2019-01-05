@@ -262,7 +262,14 @@ var GrayWolfOpt = ()=>{
             //TODO  
             // hala bayad be kamtarin sayare Blank nirohasho befreste!!!
 
-        }else if (friend_planets_length() >= 1) {
+        }else if (friend_planets_length() > 1) {
+            let friend_planets_temp = find_friend_planets();
+            let enemy_planets_temp = find_enemy_planets();
+            // now we have to move all of our forces to the enemy planet!!!
+            for (let i=0; i<friend_planets_temp.length; i++){
+                MoveForces(planets[friend_planets_temp[i].get_id()], planets[enemy_planets_temp[0].get_id()],
+                    Math.floor(friend_planets_temp[i].forces()/2));
+            }
             //TODO
             // hala bayad biyaym va halghe mohasere ro be enemy tang konim
         }
