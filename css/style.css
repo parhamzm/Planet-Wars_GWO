@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'stars'; /*a name to be used later*/
+    src: url('../fonts/Stars.ttf'); /*URL to font*/
+}
 /* body{
     background-color: black;
 }
@@ -29,8 +33,74 @@ body{
     position: absolute; 
 }
 #myCanvas{
+    display: none;
     right: 50%;
     transform: translateX(50%);
     position: absolute;
     margin: 1em;
 }
+.planet_wars{
+    right: 50%;
+    transform: translateX(50%);
+    position: absolute;
+    font-family: stars
+}
+.planet_wars h1{
+    right: 50%;
+    transform: translateX(50%);
+    position: absolute;
+    font-family: stars;
+    top: 50px;
+    color: bisque;
+    width: 10em;
+    text-align: center;
+    font-size: 6em;
+}
+.start{
+    right: 50%;
+    transform: translateX(50%);
+    position: absolute;
+    font-family: stars;
+    top: 400px;
+    font-size: 2em;
+    color: bisque;
+}
+.start {
+    background: #F62C1E;
+    background-image: -webkit-linear-gradient(top, #F62C1E, #B6D036);
+    background-image: -moz-linear-gradient(top, #F62C1E, #B6D036);
+    background-image: -ms-linear-gradient(top, #F62C1E, #B6D036);
+    background-image: -o-linear-gradient(top, #F62C1E, #B6D036);
+    background-image: linear-gradient(to bottom, #F62C1E, #B6D036);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    font-size: 40px;
+    font-weight: 100;
+    padding: 40px;
+    box-shadow: 1px 1px 20px 0px #000000;
+    -webkit-box-shadow: 1px 1px 20px 0px #000000;
+    -moz-box-shadow: 1px 1px 20px 0px #000000;
+    text-shadow: 1px 1px 20px #000000;
+    border: solid #DD380D 1px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+ }
+ 
+ .start:hover {
+    background: #D0B715;
+    background-image: -webkit-linear-gradient(top, #D0B715, #F61919);
+    background-image: -moz-linear-gradient(top, #D0B715, #F61919);
+    background-image: -ms-linear-gradient(top, #D0B715, #F61919);
+    background-image: -o-linear-gradient(top, #D0B715, #F61919);
+    background-image: linear-gradient(to bottom, #D0B715, #F61919);
+    text-decoration: none;
+ }
+ .restart{
+     display: none;
+     font-size: 20px;
+     padding: 20px;
+     left: 5px;
+     top: 15px;
+ }

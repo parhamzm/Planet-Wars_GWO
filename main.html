@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Planet Wars</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <!-- <img id="planet-small" class="planet planet-small" src="image/1.png">
-    <img id="planet-medium"class="planet planet-medium" src="image/1.png">
-    <img id="planet-large" class="planet planet-large" src="image/1.png"> -->
     <canvas id="divCanvas">
-            
+
     </canvas>
+    <button class="start restart">
+        Restart
+    </button>
+    <div class="planet_wars">
+        <h1>
+            Planet Wars
+        </h1>
+        <button class="start">
+            Start
+        </button>
+    </div>
     <canvas id="myCanvas" width="500" height="600" style="border:1px solid #d3d3d3;"></canvas>
 </body>
 
@@ -19,197 +29,221 @@
 <script src="js/main.js"></script>
 <script src="js/main3.js"></script>
 <script>
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    var coords = [
+        [80, 50],
+        [150, 100],
+        [320, 50],
+        [400, 120],
+        [150, 180],
+        [300, 180],
+        [90, 280],
+        [260, 300],
+        [160, 360],
+        [350, 380],
+        [420, 350],
+        [60, 500],
+        [150, 450],
+        [250, 500],
+        [400, 520],
+    ];
 
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-
-var coords=[ [80,50], 
-[150,100], 
-[320,50],
-[400,120],
-[150,180], 
-[300,180], 
-[90,280],   
-[260,300],            
-[160,360],
-[350,380], 
-[420,350],
-[60,500], 
-[150,450],
-[250,500],           
-[400,520], 
-];
-
-force = 50;
-r=40;
-r_label = "L";
-var new_Planet = new Planet(r_label, force ,"Green",coords[0][0],coords[0][1],r,0 );
-ctx.beginPath();
-ctx.arc(coords[0][0], coords[0][1], r, 0, Math.PI * 2, true);
-ctx.fillStyle = get_color(new_Planet.get_type());
-ctx.fill();
-ctx.fillStyle = "white";
-ctx.textAlign = "center";
-ctx.fillText(new_Planet.forces(),coords[0][0], coords[0][1]);
-planets.push(new_Planet);
-
-
-
-for(var i = 1; i < coords.length-1; i++){
-    ctx.beginPath();
-    r = 10*( Math.floor((Math.random()*3)+2) );
-    if(r==20){r_label = "S"}
-    else if(r==30){r_label = "M"}
-    else if(r==40){r_label = "L"}
-    force = Math.floor((Math.random()*20)+1);
-    var new_Planet = new Planet(r_label, force ,"Blank",coords[i][0],coords[i][1],r,i );
-    ctx.arc(coords[i][0], coords[i][1], r, 0, Math.PI * 2, true);
-    ctx.fillStyle = get_color(new_Planet.get_type());
-    ctx.fill();
-    ctx.fillStyle = "white";
-    ctx.textAlign = "center";
-    ctx.fillText(new_Planet.forces(),coords[i][0], coords[i][1]);
-    planets.push(new_Planet)
-    
-}
-
-
-force = 50;
-r=40;
-r_label = "L";
-var new_Planet = new Planet(r_label, force ,"Red",coords[14][0],coords[14][1],r,14 );
-ctx.beginPath();
-ctx.arc(coords[14][0], coords[14][1], r, 0, Math.PI * 2, true);
-ctx.fillStyle = get_color(new_Planet.get_type());
-ctx.fill();
-ctx.fillStyle = "white";
-ctx.textAlign = "center";
-ctx.fillText(new_Planet.forces(),coords[14][0], coords[14][1]);
-planets.push(new_Planet);
-
-
-console.log(planets);
-
-function updateCanvas(){
-    ctx.beginPath();
-    ctx.arc(planets[0].x_cord(),planets[0].y_cord(), planets[0].get_radius(), 0, Math.PI * 2, true);
-    ctx.fillStyle = get_color(planets[0].get_type());
-    ctx.fill();
-    ctx.fillStyle = "white";
-    ctx.textAlign = "center";
-    ctx.fillText(planets[0].forces(),coords[0][0], coords[0][1]);
-    ctx.fillText(planets[0].id,coords[0][0], coords[0][1]+20);
-
-
-    for(var i = 1; i < coords.length-1; i++){
+    function initializeGame() {
+        planets = []
+        force = 50;
+        r = 40;
+        r_label = "L";
+        var new_Planet = new Planet(r_label, force, "Green", coords[0][0], coords[0][1], r, 0);
         ctx.beginPath();
-        ctx.arc(planets[i].x_cord(),planets[i].y_cord(), planets[i].get_radius(), 0, Math.PI * 2, true);
-        ctx.fillStyle = get_color(planets[i].get_type());
+        ctx.arc(coords[0][0], coords[0][1], r, 0, Math.PI * 2, true);
+        ctx.fillStyle = get_color(new_Planet.get_type());
         ctx.fill();
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
-        ctx.fillText(planets[i].forces(),coords[i][0], coords[i][1]);
-        ctx.fillText(planets[i].id,coords[i][0], coords[i][1]+20);
-    }
-    ctx.beginPath();
-    ctx.arc(planets[14].x_cord(),planets[14].y_cord(), planets[14].get_radius(), 0, Math.PI * 2, true);
-    ctx.fillStyle = get_color(planets[14].get_type());
-    ctx.fill();
-    ctx.fillStyle = "white";
-    ctx.textAlign = "center";
-    ctx.fillText(planets[14].forces(),coords[14][0], coords[14][1]);
-    ctx.fillText(planets[14].id,coords[14][0], coords[14][1]+20);
+        ctx.fillText(new_Planet.forces(), coords[0][0], coords[0][1]);
+        planets.push(new_Planet);
 
-}
-function get_color(type){
-    if(type == "Red" ){ return "red"}
-    else if(type == "Green" ){ return "green"}
-    else { return "#9B9999"}
-}
-function growth(){
-    ForcesGrowth();
-    console.log(planets[0]);
-    setInterval(growth, 10000);
-}
-function loop(){
-    // planets.push(new_Planet)
-    // checkWinner()
-    ForcesGrowth();
-    GrayWolfOpt()
-    ctx.clearRect(0,0, c.width, c.height);
-    updateCanvas();
-    // win = Winner();
-    // console.log(win);
-    // if(win == "Green"){
-    //     alert("Fuck Farid!");
+        for (var i = 1; i < coords.length - 1; i++) {
+            ctx.beginPath();
+            r = 10 * (Math.floor((Math.random() * 3) + 2));
+            if (r == 20) {
+                r_label = "S"
+            } else if (r == 30) {
+                r_label = "M"
+            } else if (r == 40) {
+                r_label = "L"
+            }
+            force = Math.floor((Math.random() * 20) + 1);
+            var new_Planet = new Planet(r_label, force, "Blank", coords[i][0], coords[i][1], r, i);
+            ctx.arc(coords[i][0], coords[i][1], r, 0, Math.PI * 2, true);
+            ctx.fillStyle = get_color(new_Planet.get_type());
+            ctx.fill();
+            ctx.fillStyle = "white";
+            ctx.textAlign = "center";
+            ctx.fillText(new_Planet.forces(), coords[i][0], coords[i][1]);
+            planets.push(new_Planet)
 
-    // }
-    // console.log(planets[0])
-}
-
-window.setInterval(loop, 500);
-
-function checkIfcircleClicked(x,y){
-    for(let i=0; i<15; i++) {
-        if( Math.sqrt((x-planets[i].x_cord())*(x-planets[i].x_cord()) + (y-planets[i].y_cord())*(y-planets[i].y_cord())) < planets[i].get_radius() ){
-            // console.log(i)
-            return i
-        }   
-    }
-}
-
-function getCursorPosition(canvas, event) {
-    var rect = canvas.getBoundingClientRect();
-    var x = event.clientX - rect.left;
-    var y = event.clientY - rect.top;
-    // console.log("x: " + x + " y: " + y);
-    return [x,y]
-}
-
-// function checkColor(){
-
-// }
-var first_planet = -1 ;
-function init() {
-var canvas = document.getElementById('myCanvas'); 
-canvas.addEventListener("click", function (e) { 
-    var position = getCursorPosition(canvas, e);
-    var x = position[0] , y = position[1];
-    plantClicked = checkIfcircleClicked(x,y)  
-
-    if (planets[plantClicked].get_type() == "Green"){
-        console.log(first_planet)
-        if (first_planet >= 0   && first_planet != plantClicked){ 
-            console.log("hi");
-            MoveForces(planets[first_planet],planets[plantClicked],Math.floor(planets[first_planet].forces()/2))
-            first_planet = -1 
-        }else{
-            console.log("bye");
-            first_planet = plantClicked
         }
-    }else{
-        if (first_planet >= 0   && first_planet != plantClicked){ 
-            console.log("hi2");
-            MoveForces(planets[first_planet],planets[plantClicked],Math.floor(planets[first_planet].forces()/2));
-            first_planet = -1 
-        }else{
-            console.log("bye2")
-            // first_planet = plantClicked
+
+        force = 50;
+        r = 40;
+        r_label = "L";
+        var new_Planet = new Planet(r_label, force, "Red", coords[14][0], coords[14][1], r, 14);
+        ctx.beginPath();
+        ctx.arc(coords[14][0], coords[14][1], r, 0, Math.PI * 2, true);
+        ctx.fillStyle = get_color(new_Planet.get_type());
+        ctx.fill();
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText(new_Planet.forces(), coords[14][0], coords[14][1]);
+        planets.push(new_Planet);
+
+    }
+
+    function updateCanvas() {
+        ctx.beginPath();
+        ctx.arc(planets[0].x_cord(), planets[0].y_cord(), planets[0].get_radius(), 0, Math.PI * 2, true);
+        ctx.fillStyle = get_color(planets[0].get_type());
+        ctx.fill();
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText(planets[0].forces(), coords[0][0], coords[0][1]);
+        ctx.fillText(planets[0].id, coords[0][0], coords[0][1] + 20);
+
+
+        for (var i = 1; i < coords.length - 1; i++) {
+            ctx.beginPath();
+            ctx.arc(planets[i].x_cord(), planets[i].y_cord(), planets[i].get_radius(), 0, Math.PI * 2, true);
+            ctx.fillStyle = get_color(planets[i].get_type());
+            ctx.fill();
+            ctx.fillStyle = "white";
+            ctx.textAlign = "center";
+            ctx.fillText(planets[i].forces(), coords[i][0], coords[i][1]);
+            ctx.fillText(planets[i].id, coords[i][0], coords[i][1] + 20);
+        }
+        ctx.beginPath();
+        ctx.arc(planets[14].x_cord(), planets[14].y_cord(), planets[14].get_radius(), 0, Math.PI * 2, true);
+        ctx.fillStyle = get_color(planets[14].get_type());
+        ctx.fill();
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText(planets[14].forces(), coords[14][0], coords[14][1]);
+        ctx.fillText(planets[14].id, coords[14][0], coords[14][1] + 20);
+
+    }
+
+    function get_color(type) {
+        if (type == "Red") {
+            return "red"
+        } else if (type == "Green") {
+            return "green"
+        } else {
+            return "#9B9999"
         }
     }
+
+    start_game = false;
+
+    function loop() {
+        if (start_game) {
+            ForcesGrowth();
+            ctx.clearRect(0, 0, c.width, c.height);
+            updateCanvas();
+            win = Winner();
+            if (win == "Green") {
+                start_game = false
+                alert("Green win!!")
+            } else if (win == "Red") {
+                start_game = false
+                alert("Red win!!")
+            }
+        }
+    }
+
+
+    function checkIfcircleClicked(x, y) {
+        for (let i = 0; i < 15; i++) {
+            if (Math.sqrt((x - planets[i].x_cord()) * (x - planets[i].x_cord()) + (y - planets[i].y_cord()) * (y -
+                    planets[i].y_cord())) < planets[i].get_radius()) {
+                return i
+            }
+        }
+        return -1;
+    }
+
+    function getCursorPosition(canvas, event) {
+        var rect = canvas.getBoundingClientRect();
+        var x = event.clientX - rect.left;
+        var y = event.clientY - rect.top;
+        console.log("x: " + x + " y: " + y);
+        return [x, y]
+    }
+
+    var first_planet = -1;
+
+    function init() {
+        var canvas = document.getElementById('myCanvas');
+        canvas.addEventListener("click", function (e) {
+            var position = getCursorPosition(canvas, e);
+            var x = position[0],y = position[1];
+            plantClicked = checkIfcircleClicked(x, y)
+            console.log(plantClicked)
+            if (plantClicked != -1) {
+                if (planets[plantClicked].get_type() == "Green") { // first green or green to green
+                    console.log(first_planet)
+                    if (first_planet >= 0 && first_planet != plantClicked) {
+                        // console.log("hi");
+                        MoveForces(planets[first_planet], planets[plantClicked], Math.floor(planets[
+                                first_planet].forces() /
+                            2))
+                        first_planet = -1
+                    } else {
+                        // console.log("bye");
+                        first_planet = plantClicked
+                    }
+                } else { // first green and second blank
+                    if (first_planet >= 0 && first_planet != plantClicked) {
+                        // console.log("hi2");
+                        MoveForces(planets[first_planet], planets[plantClicked], Math.floor(planets[
+                                first_planet].forces() /
+                            2));
+                        first_planet = -1
+                    } else {
+                        // console.log("bye2")
+                        first_planet = plantClicked
+                    }
+                }
+
+            }
+        });
+    }
+
+var timer = window.setInterval(loop, 500);
+var timer_wolf = window.setInterval(GrayWolfOpt, 4000);
+
+
+    $(".start").click(function () {
+        $(".planet_wars").css("display", "none");
+        $("#myCanvas").css("display", "block");
+        $(".restart").css("display", "block");
+        clearInterval(timer)
+        clearInterval(timer_wolf)
+        init();
+        initializeGame();
+        timer = window.setInterval(loop, 500);
+        timer_wolf = window.setInterval(GrayWolfOpt, 4000);
+        start_game = true;
     });
-}
-
-
-$(document).ready(function() {
-    init();   
-});
-
-
-
-
-
+    $(".restart").click(function () {
+        clearInterval(timer)
+        clearInterval(timer_wolf)
+        init();
+        initializeGame();
+        timer = window.setInterval(loop, 500);
+        timer_wolf = window.setInterval(GrayWolfOpt, 4000);
+        start_game = true;
+    });
 </script>
+
 </html>
-
-
