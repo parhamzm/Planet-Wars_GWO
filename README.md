@@ -199,7 +199,7 @@ We welcome contributions to enhance this project! If you're interested in contri
 This project is licensed under the **[TODO: SPECIFY YOUR CHOSEN LICENSE NAME HERE, e.g., MIT License, Apache License 2.0]**.
 Please see the `LICENSE` file in the root of the repository for full license text.
 
-**==> IMPORTANT: You MUST update the placeholder `[YOUR_LICENSE_TYPE]` and `[YOUR_LICENSE]` in the badge at the top of this README and the license name in the sentence above to reflect the actual license you have included in the `LICENSE` file. <==**
+**==> IMPORTANT: You MUST update the placeholder `Open-Source License` and `MIT License` in the badge at the top of this README and the license name in the sentence above to reflect the actual license you have included in the `LICENSE` file. <==**
 
 ---
 
